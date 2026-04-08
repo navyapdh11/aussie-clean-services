@@ -13,9 +13,13 @@ const areasRoutes = require('./routes/areas');
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -27,7 +31,7 @@ app.use('/api/faqs', faqsRoutes);
 app.use('/api/areas', areasRoutes);
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ status: 'ok', timestamp: new Date().toISOString(), environment: config.NODE_ENV });
 });
 
 app.get('*', (req, res) => {
@@ -35,13 +39,18 @@ app.get('*', (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+  console.error('Error:', err.message);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
 const PORT = config.PORT;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, closing gracefully');
+  server.close(() => process.exit(0));
 });
 
 module.exports = app;
