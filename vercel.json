@@ -2,6 +2,10 @@
   "version": 2,
   "builds": [
     {
+      "src": "server/public/**",
+      "use": "@vercel/static"
+    },
+    {
       "src": "server/index.js",
       "use": "@vercel/node"
     }
@@ -12,8 +16,24 @@
       "dest": "/server/index.js"
     },
     {
+      "src": "/admin.html",
+      "dest": "/server/public/admin.html"
+    },
+    {
+      "src": "/(.*\\.js$)",
+      "dest": "/server/public/$1"
+    },
+    {
+      "src": "/(.*\\.css$)",
+      "dest": "/server/public/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/server/public/index.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/server/index.js"
+      "dest": "/server/public/index.html"
     }
   ]
 }
