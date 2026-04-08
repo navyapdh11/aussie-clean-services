@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleClean Australia | Professional Cleaning Services</title>
+    <meta name="description" content="Premium cleaning services across Australia. Residential, commercial, end-of-lease, window cleaning and more. Fully insured & police-checked staff.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-icon"><i class="fas fa-sparkles"></i></span>
+                <span class="logo-text">SparkleClean <span class="au-text">Australia</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary nav-cta">Get Quote</a>
+            <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="hero-badge"><i class="fas fa-award"></i> Trusted Across Australia</span>
+            <h1 class="hero-title">Your Home, <span class="highlight">Immaculately</span> Clean</h1>
+            <p class="hero-subtitle">From Sydney to Perth, we deliver spotless results with eco-friendly products. Fully insured, police-checked staff. 100% satisfaction guaranteed.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="15000">0</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.9<span class="stat-star">★</span></span>
+                    <span class="stat-label">Google Rating</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary btn-large"><span>Book Now</span><i class="fas fa-arrow-right"></i></a>
+                <a href="#services" class="btn btn-secondary btn-large"><span>Our Services</span></a>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span>Scroll to explore</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-star"></i> What We Offer</span>
+                <h2>Our Cleaning Services</h2>
+                <p>Comprehensive cleaning solutions tailored to Australian homes and businesses</p>
+            </div>
+            <div class="services-grid" id="services-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-images"></i> Before & After</span>
+                <h2>See the Transformation</h2>
+                <p>Real results from our cleaning services across Australia</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-comparison">
+                        <div class="comparison-before">
+                            <span class="comparison-label">Before</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #6b7280 0%, #374151 100%);">
+                                <i class="fas fa-couch"></i>
+                            </div>
+                        </div>
+                        <div class="comparison-after">
+                            <span class="comparison-label">After</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);">
+                                <i class="fas fa-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="comparison-slider">
+                            <div class="slider-handle">
+                                <i class="fas fa-left-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Carpet Deep Clean</h4>
+                        <p>Before & After - Sydney Client</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-comparison">
+                        <div class="comparison-before">
+                            <span class="comparison-label">Before</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #78716c 0%, #57534e 100%);">
+                                <i class="fas fa-window-maximize"></i>
+                            </div>
+                        </div>
+                        <div class="comparison-after">
+                            <span class="comparison-label">After</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Window Cleaning</h4>
+                        <p>Crystal Clear - Melbourne Apartment</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-comparison">
+                        <div class="comparison-before">
+                            <span class="comparison-label">Before</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #71717a 0%, #3f3f46 100%);">
+                                <i class="fas fa-broom"></i>
+                            </div>
+                        </div>
+                        <div class="comparison-after">
+                            <span class="comparison-label">After</span>
+                            <div class="comparison-image" style="background: linear-gradient(135deg, #67e8f9 0%, #4ade80 100%);">
+                                <i class="fas fa-house-chimney"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>End of Lease</h4>
+                        <p>Full Bond Back - Brisbane Unit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <span class="section-badge"><i class="fas fa-users"></i> About Us</span>
+                <h2>Australia's Trusted Cleaning Company</h2>
+                <p>Since 2016, SparkleClean Australia has been delivering exceptional cleaning services across major Australian cities. We're a locally owned, fully insured company committed to making your spaces shine.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div>
+                            <h4>Fully Insured & Licensed</h4>
+                            <p>$20M public liability insurance for your peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                        <div>
+                            <h4>Police-Checked Staff</h4>
+                            <p>All team members hold current National Police Checks.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                        <div>
+                            <h4>Eco-Friendly Products</h4>
+                            <p>We use Australian-made, environmentally safe cleaning products.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                        <div>
+                            <h4>Satisfaction Guaranteed</h4>
+                            <p>Not happy? We'll re-clean within 24 hours at no extra cost.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="about-card about-card-1">
+                    <i class="fas fa-building"></i>
+                    <span>500+</span>
+                    <p>Commercial Clients</p>
+                </div>
+                <div class="about-card about-card-2">
+                    <i class="fas fa-home"></i>
+                    <span>10K+</span>
+                    <p> Homes Cleaned</p>
+                </div>
+                <div class="about-card about-card-3">
+                    <i class="fas fa-award"></i>
+                    <span>98%</span>
+                    <p>Bond Back Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</span>
+                <h2>What Our Clients Say</h2>
+                <p>Trusted by thousands of Australians nationwide</p>
+            </div>
+            <div class="testimonials-grid" id="testimonials-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-circle-question"></i> Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our services</p>
+            </div>
+            <div class="faq-grid" id="faq-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas We Serve -->
+    <section class="areas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-map-marked-alt"></i> Service Areas</span>
+                <h2>Areas We Serve</h2>
+                <p>Providing professional cleaning services across Australia's major cities</p>
+            </div>
+            <div class="areas-grid" id="areas-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-paper-plane"></i> Get In Touch</span>
+                <h2>Request a Free Quote</h2>
+                <p>Fill out the form below and we'll get back to you within 2 hours</p>
+            </div>
+            <div class="contact-container">
+                <form class="contact-form" id="quote-form">
+                    <div class="form-alert" id="form-alert"></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><i class="fas fa-phone"></i> Phone *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="04XX XXX XXX">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com.au">
+                        </div>
+                        <div class="form-group">
+                            <label for="suburb"><i class="fas fa-location-dot"></i> Suburb *</label>
+                            <input type="text" id="suburb" name="suburb" required placeholder="e.g., Surry Hills">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service"><i class="fas fa-list"></i> Service Required *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-message"></i> Additional Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your cleaning needs..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large btn-full">
+                        <span>Get My Free Quote</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <p class="form-note"><i class="fas fa-check"></i> No obligation &nbsp; <i class="fas fa-clock"></i> Response within 2 hours &nbsp; <i class="fas fa-tag"></i> Competitive pricing</p>
+                </form>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h3>Contact Details</h3>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <strong>Phone</strong>
+                                <a href="tel:1300725725">1300 SPARKLE (1300 725 725)</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:hello@sparkleclean.com.au">hello@sparkleclean.com.au</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <strong>Hours</strong>
+                                <p>Mon-Fri: 7am - 7pm<br>Sat: 8am - 5pm<br>Sun: 9am - 4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card highlight">
+                        <h3>Why Choose Us?</h3>
+                        <ul class="why-list">
+                            <li><i class="fas fa-check"></i> Free, no-obligation quotes</li>
+                            <li><i class="fas fa-bolt"></i> Same-day service available</li>
+                            <li><i class="fas fa-star"></i> 100% satisfaction guarantee</li>
+                            <li><i class="fas fa-shield"></i> Fully insured ($20M liability)</li>
+                            <li><i class="fas fa-user-check"></i> Police-checked staff</li>
+                            <li><i class="fas fa-leaf"></i> Eco-friendly products</li>
+                            <li><i class="fas fa-flag"></i> Australian-owned & operated</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-sparkles"></i></span>
+                        <span class="logo-text">SparkleClean <span class="au-text">Australia</span></span>
+                    </div>
+                    <p>Professional cleaning services across Australia. Making homes and businesses shine since 2016.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Residential Cleaning</a></li>
+                        <li><a href="#services">Commercial Cleaning</a></li>
+                        <li><a href="#services">End of Lease Cleaning</a></li>
+                        <li><a href="#services">Window Cleaning</a></li>
+                        <li><a href="#services">Carpet & Upholstery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Service Areas</h4>
+                    <ul>
+                        <li><a href="#">Sydney</a></li>
+                        <li><a href="#">Melbourne</a></li>
+                        <li><a href="#">Brisbane</a></li>
+                        <li><a href="#">Perth</a></li>
+                        <li><a href="#">Adelaide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> SparkleClean Australia. All rights reserved. | ABN: 12 345 678 901</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
