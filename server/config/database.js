@@ -1,23 +1,60 @@
 const path = require('path');
 const fs = require('fs');
-const config = require('./index');
 
 class JsonStore {
   constructor(filePath) {
     this.filePath = filePath;
-    this.data = this.load();
+    this.data = {};
+    this.load();
   }
 
   load() {
     try {
       if (fs.existsSync(this.filePath)) {
         const content = fs.readFileSync(this.filePath, 'utf-8');
-        return JSON.parse(content);
+        this.data = JSON.parse(content);
+      } else {
+        this.seed();
       }
     } catch (e) {
       console.error('Load error:', e.message);
+      this.seed();
     }
-    return {};
+  }
+
+  seed() {
+    this.data = {
+      services: [
+        { id: 1, name: 'Residential Cleaning', slug: 'residential', description: 'Regular home cleaning, deep cleans, and one-off sessions.', icon: '🏠', price_from: 120, features: ['Weekly & fortnightly options', 'Kitchen & bathroom sanitisation', 'Dusting, vacuuming & mopping', 'Eco-friendly products'], featured: 0, display_order: 1, active: 1 },
+        { id: 2, name: 'Commercial Cleaning', slug: 'commercial', description: 'Professional office and commercial space cleaning.', icon: '🏢', price_from: 200, features: ['Daily, weekly, or monthly schedules', 'Office & retail spaces', 'Carpet & floor care', 'After-hours service available'], featured: 1, display_order: 2, active: 1 },
+        { id: 3, name: 'End of Lease Cleaning', slug: 'end-of-lease', description: 'Get your full bond back with our thorough cleaning.', icon: '🔑', price_from: 250, features: ['100% bond-back guarantee', 'Real estate approved', 'Full kitchen & bathroom deep clean', 'Window cleaning included'], featured: 0, display_order: 3, active: 1 },
+        { id: 4, name: 'Window Cleaning', slug: 'window', description: 'Crystal clear windows for homes and businesses.', icon: '🪟', price_from: 80, features: ['Interior & exterior', 'Multi-story buildings', 'Streak-free guarantee', 'Screen & track cleaning'], featured: 0, display_order: 4, active: 1 },
+        { id: 5, name: 'Carpet & Upholstery', slug: 'carpet', description: 'Deep steam cleaning for carpets, rugs, and furniture.', icon: '🛋️', price_from: 150, features: ['Hot water extraction', 'Stain & odour removal', 'Pet-friendly solutions', 'Fast drying time'], featured: 0, display_order: 5, active: 1 },
+        { id: 6, name: 'Builders Clean', slug: 'builders', description: 'Post-construction and renovation cleaning.', icon: '🏗️', price_from: 400, features: ['Dust & debris removal', 'Paint & plaster cleanup', 'Window & frame cleaning', 'Final inspection ready'], featured: 0, display_order: 6, active: 1 }
+      ],
+      testimonials: [
+        { id: 1, name: 'Sarah M.', location: 'Melbourne, VIC', text: 'Absolutely brilliant service! The team was thorough, punctual, and friendly. My apartment in Melbourne CBD has never looked better. Highly recommend!', rating: 5, active: 1, display_order: 1 },
+        { id: 2, name: 'James T.', location: 'Sydney, NSW', text: 'Used their end-of-lease cleaning and got my full bond back! The real estate agent was impressed. Great value for money. Will definitely use again.', rating: 5, active: 1, display_order: 2 },
+        { id: 3, name: 'Lisa P.', location: 'Brisbane, QLD', text: "We've been using SparkleClean for our Brisbane office for 6 months now. Reliable, professional, and always consistent quality. Best cleaning service we've had.", rating: 5, active: 1, display_order: 3 }
+      ],
+      faqs: [
+        { id: 1, question: 'How do I get a quote?', answer: 'Fill out the contact form on our website or call us directly on 1300 SPARKLE. We typically respond within 2 hours during business hours.', category: 'General', active: 1, display_order: 1 },
+        { id: 2, question: 'What areas do you service?', answer: 'We service all major Australian cities including Sydney, Melbourne, Brisbane, Perth, Adelaide, and Canberra, plus surrounding suburbs.', category: 'General', active: 1, display_order: 2 },
+        { id: 3, question: 'Are your cleaners insured?', answer: 'Yes! All our cleaners are fully insured with $20M public liability coverage and have undergone police background checks.', category: 'Safety', active: 1, display_order: 3 },
+        { id: 4, question: 'Do you use eco-friendly products?', answer: 'Absolutely! We use Australian-made, environmentally safe cleaning products.', category: 'General', active: 1, display_order: 4 },
+        { id: 5, question: 'What is your cancellation policy?', answer: 'We require 24 hours notice for cancellation. Cancellations within 24 hours may incur a small fee.', category: 'General', active: 1, display_order: 5 }
+      ],
+      areas: [
+        { id: 1, name: 'Sydney', slug: 'sydney', state: 'NSW', description: 'All suburbs & CBD', active: 1, display_order: 1 },
+        { id: 2, name: 'Melbourne', slug: 'melbourne', state: 'VIC', description: 'All suburbs & CBD', active: 1, display_order: 2 },
+        { id: 3, name: 'Brisbane', slug: 'brisbane', state: 'QLD', description: 'All suburbs & CBD', active: 1, display_order: 3 },
+        { id: 4, name: 'Perth', slug: 'perth', state: 'WA', description: 'All suburbs & CBD', active: 1, display_order: 4 },
+        { id: 5, name: 'Adelaide', slug: 'adelaide', state: 'SA', description: 'All suburbs & CBD', active: 1, display_order: 5 },
+        { id: 6, name: 'Canberra', slug: 'canberra', state: 'ACT', description: 'All suburbs & CBD', active: 1, display_order: 6 }
+      ],
+      quotes: []
+    };
+    this.save();
   }
 
   save() {
@@ -34,11 +71,6 @@ class JsonStore {
 
   get(key) {
     return this.data[key] || [];
-  }
-
-  getOne(key, id) {
-    const items = this.data[key] || [];
-    return items.find(item => item.id === id);
   }
 
   insert(key, item) {
@@ -74,100 +106,43 @@ class JsonStore {
     }
     return { changes: 0 };
   }
-
-  count(key, condition = null) {
-    const items = this.data[key] || [];
-    if (!condition) return { count: items.length };
-    return { count: items.filter(condition).length };
-  }
-
-  seed(key, seedData, options = {}) {
-    if ((this.data[key] || []).length === 0) {
-      this.data[key] = seedData.map((item, i) => ({
-        ...item,
-        id: i + 1,
-        display_order: item.display_order || i + 1,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
-      }));
-      this.save();
-    }
-  }
 }
 
-const store = new JsonStore(path.join('/tmp', 'sparkleclean-data.json'));
-
-const services = [
-  { name: 'Residential Cleaning', slug: 'residential', description: 'Regular home cleaning, deep cleans, and one-off sessions.', icon: '🏠', price_from: 120, features: JSON.stringify(['Weekly & fortnightly options', 'Kitchen & bathroom sanitisation', 'Dusting, vacuuming & mopping', 'Eco-friendly products']), featured: 0 },
-  { name: 'Commercial Cleaning', slug: 'commercial', description: 'Professional office and commercial space cleaning.', icon: '🏢', price_from: 200, features: JSON.stringify(['Daily, weekly, or monthly schedules', 'Office & retail spaces', 'Carpet & floor care', 'After-hours service available']), featured: 1 },
-  { name: 'End of Lease Cleaning', slug: 'end-of-lease', description: 'Get your full bond back with our thorough cleaning.', icon: '🔑', price_from: 250, features: JSON.stringify(['100% bond-back guarantee', 'Real estate approved', 'Full kitchen & bathroom deep clean', 'Window cleaning included']), featured: 0 },
-  { name: 'Window Cleaning', slug: 'window', description: 'Crystal clear windows for homes and businesses.', icon: '🪟', price_from: 80, features: JSON.stringify(['Interior & exterior', 'Multi-story buildings', 'Streak-free guarantee', 'Screen & track cleaning']), featured: 0 },
-  { name: 'Carpet & Upholstery', slug: 'carpet', description: 'Deep steam cleaning for carpets, rugs, and furniture.', icon: '🛋️', price_from: 150, features: JSON.stringify(['Hot water extraction', 'Stain & odour removal', 'Pet-friendly solutions', 'Fast drying time']), featured: 0 },
-  { name: 'Builders Clean', slug: 'builders', description: 'Post-construction and renovation cleaning.', icon: '🏗️', price_from: 400, features: JSON.stringify(['Dust & debris removal', 'Paint & plaster cleanup', 'Window & frame cleaning', 'Final inspection ready']), featured: 0 }
-];
-
-const testimonials = [
-  { name: 'Sarah M.', location: 'Melbourne, VIC', text: 'Absolutely brilliant service! The team was thorough, punctual, and friendly. My apartment in Melbourne CBD has never looked better. Highly recommend!', rating: 5 },
-  { name: 'James T.', location: 'Sydney, NSW', text: "Used their end-of-lease cleaning and got my full bond back! The real estate agent was impressed. Great value for money. Will definitely use again.", rating: 5 },
-  { name: 'Lisa P.', location: 'Brisbane, QLD', text: "We've been using SparkleClean for our Brisbane office for 6 months now. Reliable, professional, and always consistent quality. Best cleaning service we've had.", rating: 5 },
-  { name: 'Michael R.', location: 'Perth, WA', text: 'The builders clean after our renovation was exceptional. They transformed our new home from a construction site to a pristine living space. Outstanding work!', rating: 5 },
-  { name: 'Emma K.', location: 'Adelaide, SA', text: 'Very happy with the regular residential cleaning. The team is always on time and does a thorough job. Highly recommended for Adelaide residents.', rating: 5 }
-];
-
-const faqs = [
-  { question: 'How do I get a quote?', answer: 'Fill out the contact form on our website or call us directly on 1300 SPARKLE. We typically respond within 2 hours during business hours.', category: 'General' },
-  { question: 'What areas do you service?', answer: 'We service all major Australian cities including Sydney, Melbourne, Brisbane, Perth, Adelaide, and Canberra, plus surrounding suburbs.', category: 'General' },
-  { question: 'Are your cleaners insured?', answer: 'Yes! All our cleaners are fully insured with $20M public liability coverage and have undergone police background checks.', category: 'Safety' },
-  { question: 'Do you use eco-friendly products?', answer: 'Absolutely! We use Australian-made, environmentally safe cleaning products that are tough on dirt but gentle on your home and the planet.', category: 'General' },
-  { question: 'What is your cancellation policy?', answer: 'We require 24 hours notice for cancellation. Cancellations within 24 hours may incur a small fee. We understand emergencies happen - just call us!', category: 'General' },
-  { question: 'Do you offer a satisfaction guarantee?', answer: "Yes! If you're not happy with our service, we'll re-clean within 24 hours at no extra cost. Your satisfaction is our priority.", category: 'General' },
-  { question: 'How long does a typical residential clean take?', answer: 'A standard residential clean takes 2-4 hours depending on the size of your home and specific requirements.', category: 'General' },
-  { question: 'Do I need to be home during the clean?', answer: 'Not necessarily. Many clients provide us with a key or access code. We\'re fully insured and trusted in your home.', category: 'General' }
-];
-
-const areas = [
-  { name: 'Sydney', slug: 'sydney', state: 'NSW', description: 'Comprehensive cleaning services across Sydney and all surrounding suburbs.' },
-  { name: 'Melbourne', slug: 'melbourne', state: 'VIC', description: "Melbourne's trusted cleaning professionals for homes and businesses." },
-  { name: 'Brisbane', slug: 'brisbane', state: 'QLD', description: "Queensland's premium cleaning services for residential and commercial spaces." },
-  { name: 'Perth', slug: 'perth', state: 'WA', description: "Western Australia's leading cleaning company serving Perth and surrounds." },
-  { name: 'Adelaide', slug: 'adelaide', state: 'SA', description: 'Reliable and professional cleaning services across Adelaide and suburbs.' },
-  { name: 'Canberra', slug: 'canberra', state: 'ACT', description: 'Premium cleaning solutions for the ACT region and surrounding areas.' }
-];
-
-store.seed('services', services);
-store.seed('testimonials', testimonials);
-store.seed('faqs', faqs);
-store.seed('areas', areas);
+const store = new JsonStore('/tmp/sparkleclean-data.json');
 
 module.exports = {
   prepare: (sql) => ({
     all: () => {
       const match = sql.match(/FROM\s+(\w+)/i);
-      return match ? store.get(match[1]) : [];
+      const table = match ? match[1] : null;
+      if (!table) return [];
+      
+      if (sql.includes('WHERE active = 1')) {
+        return store.get(table).filter(i => i.active === 1).sort((a, b) => a.display_order - b.display_order);
+      }
+      return store.get(table).sort((a, b) => a.display_order - b.display_order);
     },
     get: (...params) => {
       const match = sql.match(/FROM\s+(\w+)/i);
-      if (!match) return { count: 0 };
-      const table = match[1];
+      const table = match ? match[1] : null;
+      if (!table) return { count: 0 };
+      
       if (sql.includes('COUNT(*)')) {
-        if (sql.includes('WHERE')) {
+        if (sql.includes('WHERE status')) {
           const cond = sql.match(/status\s*=\s*'([^']+)'/);
           return { count: store.get(table).filter(i => i.status === cond?.[1]).length };
         }
         return { count: store.get(table).length };
       }
-      if (sql.includes('GROUP BY')) {
-        return store.get(table).reduce((acc, i) => {
-          const key = i.service || i.category || 'unknown';
-          acc[key] = (acc[key] || 0) + 1;
-          return acc;
-        }, []).map(k => ({ service: k, count: store.get(table).filter(i => i.service === k).length }));
+      if (sql.includes('WHERE slug')) {
+        const slug = params[0];
+        return store.get(table).find(i => i.slug === slug) || null;
       }
       return store.get(table)[0] || null;
     },
     run: (...params) => {
-      const match = sql.match(/INTO\s+(\w+)|FROM\s+(\w+)/i);
-      const table = match?.[1] || match?.[2];
+      const match = sql.match(/INTO\s+(\w+)/i);
+      const table = match ? match[1] : null;
       if (!table) return { lastInsertRowid: 0, changes: 0 };
       
       if (sql.includes('INSERT')) {
@@ -177,12 +152,13 @@ module.exports = {
         if (!obj.status) obj.status = 'pending';
         return store.insert(table, obj);
       }
-      if (sql.includes('UPDATE') || sql.includes('DELETE')) {
+      if (sql.includes('UPDATE')) {
         const id = params[params.length - 1];
-        if (sql.includes('UPDATE')) {
-          const status = params[0];
-          return store.update(table, id, { status });
-        }
+        const status = params[0];
+        return store.update(table, id, { status });
+      }
+      if (sql.includes('DELETE')) {
+        const id = params[0];
         return store.delete(table, id);
       }
       return { changes: 0 };

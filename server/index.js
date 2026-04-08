@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const config = require('./config');
 
 const authRoutes = require('./routes/auth');
 const quotesRoutes = require('./routes/quotes');
@@ -31,7 +30,7 @@ app.use('/api/faqs', faqsRoutes);
 app.use('/api/areas', areasRoutes);
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString(), environment: config.NODE_ENV });
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 app.get('*', (req, res) => {
@@ -43,14 +42,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-const PORT = config.PORT;
-const server = app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, closing gracefully');
-  server.close(() => process.exit(0));
-});
+if (process.env.VERCEL !== '1') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
 
 module.exports = app;
