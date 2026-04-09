@@ -8,21 +8,16 @@ module.exports = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   
   DB_PATH: isVercel 
-    ? process.env.DB_PATH || '/tmp/sparkleclean.db'
-    : process.env.DB_PATH || path.join(__dirname, '..', 'data', 'sparkleclean.db'),
+    ? process.env.DB_PATH || '/tmp/vercelclean.db'
+    : process.env.DB_PATH || path.join(__dirname, '..', 'data', 'vercelclean.db'),
   
-  JWT_SECRET: process.env.JWT_SECRET || 'sparkleclean-australia-super-secret-key-2026',
+  JWT_SECRET: process.env.JWT_SECRET || 'vercelclean-services-enterprise-key-2026',
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
   
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'admin@ozcleaners.com.au',
-  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'sparkle2026',
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'admin@vercelcleaningservices.com.au',
+  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'vercel2026',
   
-  SMTP_HOST: process.env.SMTP_HOST || 'smtp.gmail.com',
-  SMTP_PORT: process.env.SMTP_PORT || 587,
-  SMTP_USER: process.env.SMTP_USER || '',
-  SMTP_PASS: process.env.SMTP_PASS || '',
-  
-  SITE_NAME: 'OzCleaners Australia',
+  SITE_NAME: 'Vercel Cleaning Services',
   SITE_URL: process.env.SITE_URL || 'https://aussie-clean-services.vercel.app',
   
   IS_VERCEL: isVercel

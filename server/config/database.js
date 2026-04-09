@@ -35,7 +35,7 @@ class JsonStore {
       testimonials: [
         { id: 1, name: 'Sarah M.', location: 'Melbourne, VIC', text: 'Absolutely brilliant service! The team was thorough, punctual, and friendly. My apartment in Melbourne CBD has never looked better. Highly recommend!', rating: 5, active: 1, display_order: 1 },
         { id: 2, name: 'James T.', location: 'Sydney, NSW', text: 'Used their end-of-lease cleaning and got my full bond back! The real estate agent was impressed. Great value for money. Will definitely use again.', rating: 5, active: 1, display_order: 2 },
-        { id: 3, name: 'Lisa P.', location: 'Brisbane, QLD', text: "We've been using OzCleaners for our Brisbane office for 6 months now. Reliable, professional, and always consistent quality. Best cleaning service we've had.", rating: 5, active: 1, display_order: 3 }
+        { id: 3, name: 'Lisa P.', location: 'Brisbane, QLD', text: "We've been using Vercel Cleaning Services for our Brisbane office for 6 months now. Reliable, professional, and always consistent quality. Best cleaning service we've had.", rating: 5, active: 1, display_order: 3 }
       ],
       faqs: [
         { id: 1, question: 'How do I get a quote?', answer: 'Fill out the contact form on our website or call us directly on 1300 SPARKLE. We typically respond within 2 hours during business hours.', category: 'General', active: 1, display_order: 1 },
@@ -108,7 +108,7 @@ class JsonStore {
   }
 }
 
-const store = new JsonStore('/tmp/sparkleclean-data.json');
+const store = new JsonStore('/tmp/vercelclean-data.json');
 
 module.exports = {
   prepare: (sql) => ({
