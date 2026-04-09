@@ -101,7 +101,7 @@ if (mobileMenuBtn && navLinks) {
 const footerParagraph = document.querySelector('.footer-bottom p');
 if (footerParagraph) {
     const currentYear = new Date().getFullYear();
-    footerParagraph.innerHTML = `&copy; ${currentYear} SparkleClean Australia. All rights reserved. | ABN: 12 345 678 901`;
+    footerParagraph.innerHTML = `&copy; ${currentYear} OzCleaners Australia. All rights reserved. | ABN: 12 345 678 901`;
 }
 
 // Phone number formatting

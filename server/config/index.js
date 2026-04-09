@@ -22,7 +22,7 @@ module.exports = {
   SMTP_USER: process.env.SMTP_USER || '',
   SMTP_PASS: process.env.SMTP_PASS || '',
   
-  SITE_NAME: 'SparkleClean Australia',
+  SITE_NAME: 'OzCleaners Australia',
   SITE_URL: process.env.SITE_URL || 'https://aussie-clean-services.vercel.app',
   
   IS_VERCEL: isVercel
